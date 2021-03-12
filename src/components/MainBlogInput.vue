@@ -14,5 +14,9 @@ export default {
 </script>
 
 <style scoped>
-
+.el-input{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
 </style>

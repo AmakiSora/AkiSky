@@ -7,40 +7,48 @@
       v-infinite-scroll="load"
       infinite-scroll-distance="10"
       infinite-scroll-disabled="disabled">
-      <div v-for="i in count">
-        <el-container>
+        <el-container class="fa-border" v-for="i in items">
           <el-aside style="width: 50px">
             <div class="block"><el-avatar :size="50" :src="circleUrl"></el-avatar></div>
           </el-aside>
           <el-container>
-            <el-header>
-              <a>AkiSky官方</a>
+            <el-header style="height: 50px;">
+              <a>{{i.name}}</a>
+              <h1 class="diyP">刚刚</h1>
             </el-header>
             <el-main>
-              <p>更新1.02版本</p>
+              <p class="diyP">{{i.content}}</p>
+              <el-link><i class="fa fa-paper-plane-o"></i>转发</el-link>
+              <el-link><i class="el-icon-chat-dot-round"></i>评论</el-link>
+              <el-link><i class="fa fa-heart-o"></i>点赞</el-link>
             </el-main>
-            <el-footer>
-              <el-button>1</el-button>
-              <el-button>1</el-button>
-              <el-button>1</el-button>
-              <div class="line"><div></div></div>
-            </el-footer>
+
           </el-container>
         </el-container>
-      </div>
     </div>
-    <p v-if="loading">加载中...</p>
-    <p v-if="noMore">没有更多了</p>
+    <p style="text-align: center" v-if="loading">加载中...</p>
+    <p style="text-align: center" v-if="noMore">没有更多了</p>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "MainBlogContent",
   data () {
     return {
-      count: 5,
-      loading: false
+      items: [
+        {
+          name: '123',
+          content: '222'
+        },
+        {
+          name: '333',
+          content: '321',
+        }
+      ],
+      loading: true
     }
   },
   computed: {
@@ -58,7 +66,10 @@ export default {
         this.count += 2
         this.loading = false
       }, 2000)
-    }
+    },
+  },
+  mounted(){
+    axios.get('/QueryAllTrend').then(res=>(this.items=res.data))
   }
 
 }
@@ -68,8 +79,14 @@ export default {
 .infinite-list-wrapper{
   width:100%;
   height:800px;
+  margin: 0;
+}
+.el-container{
+  margin: 15px;
+  border-radius: 20px;
 }
 .el-aside {
+  margin-left: 10px;
   margin-top: 10px;
   left: 0;
   right: 50px;
@@ -77,11 +94,20 @@ export default {
   bottom: 600px;
 }
 .el-header{
-  margin-top: 10px;
-  margin-left: -10px;
-  height: 40px;
+  padding: 0;
 }
-.el-footer{
-  margin-bottom: 10px;
+.el-main{
+  padding: 0;
+}
+/*diyP为<p>的样式*/
+.diyP{
+  margin: 0;
+  padding: 0 0 10px 0;
+}
+.router-link-active{
+text-decoration: none;
+}
+a{
+  text-decoration: none;
 }
 </style>

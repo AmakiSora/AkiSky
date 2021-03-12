@@ -37,9 +37,9 @@ export default {
 /*容器css*/
 html,body,#app,.el-container{
   /*设置内部填充为0，几个布局元素之间没有间距*/
-  padding: 0px;
+  padding: 0;
   /*外部间距也是如此设置*/
-  margin: 0px;
+  margin: 0;
   /*统一设置高度为100%*/
   height: 100%;
 }
@@ -57,12 +57,14 @@ html,body,#app,.el-container{
   background-color: rgb(238, 241, 246);
 }
 .el-main {
+  padding: 10px;
   position: absolute;
   height: 90%;
   left: 21%;
   right: 21%;
   top: 60px;
   bottom: 0;
+
 }
 /*.el-footer{*/
 /*  position: relative;*/
