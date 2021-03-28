@@ -13,10 +13,6 @@ export default {
 </script>
 
 <style>
-
-body .el-scrollbar {
-  overflow-x: hidden;
-}
 .router-link-active {
   /*路由下划线*/
   text-decoration: none;

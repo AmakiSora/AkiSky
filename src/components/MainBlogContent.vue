@@ -1,13 +1,9 @@
 <template>
-<!--  <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">-->
-<!--    <li v-for="i in count" class="infinite-list-item">{{ i }}</li>-->
-<!--  </ul>-->
   <div class="infinite-list-wrapper">
     <div
       v-infinite-scroll="load"
-      infinite-scroll-distance="10"
       infinite-scroll-disabled="disabled">
-        <el-container class="fa-border" v-for="i in items">
+        <el-container class="fa-border" v-for="i in items" :key="index">
           <el-aside style="width: 50px">
             <div class="block"><el-avatar :size="50" :src="circleUrl"></el-avatar></div>
           </el-aside>
@@ -40,15 +36,13 @@ export default {
     return {
       items: [
         {
-          name: '123',
-          content: '222'
-        },
-        {
-          name: '333',
-          content: '321',
+          name: '用户名',
+          content: '内容'
         }
       ],
-      loading: true
+      itemPerLoad: 5,//每次加载条数
+      pageIndex: 1,//请求页数
+      loading: false
     }
   },
   computed: {
@@ -61,6 +55,7 @@ export default {
   },
   methods: {
     load () {
+      let self = this;
       this.loading = true
       setTimeout(() => {
         this.count += 2
@@ -69,7 +64,12 @@ export default {
     },
   },
   mounted(){
-    axios.get('/QueryAllTrend').then(res=>(this.items=res.data))
+    axios.get('/QueryAllTrend',{
+      params:{
+        page: 1142,
+        page_size: 2
+      }
+    }).then(res=>(this.items=res.data))
   }
 
 }
