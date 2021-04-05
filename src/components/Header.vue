@@ -3,7 +3,7 @@
     <div class="header-content">
       <div class="header-left">
         <ul class="header-ul">
-          <li class="header-li">按钮</li>
+          <li class="header-li"><Login></Login></li>
           <li class="header-li">按钮</li>
           <li class="header-li">按钮</li>
           <li class="header-li">按钮</li>
@@ -35,8 +35,10 @@
 </template>
 
 <script>
+import Login from "./Login";
 export default {
-name: "Header"
+name: "Header",
+  components: {Login}
 }
 </script>
 

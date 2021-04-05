@@ -2,6 +2,7 @@
   <div class="infinite-list-wrapper">
     <div
       v-infinite-scroll="load"
+      infinite-scroll-distance="10"
       infinite-scroll-disabled="disabled">
         <el-container class="fa-border" v-for="i in items" :key="index">
           <el-aside style="width: 50px">
@@ -78,7 +79,6 @@ export default {
 <style scoped>
 .infinite-list-wrapper{
   width:100%;
-  height:800px;
   margin: 0;
 }
 .el-container{

@@ -11,7 +11,7 @@ import 'font-awesome/css/font-awesome.min.css'
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
 axios.defaults.baseURL = apiConfig.baseUrl;// 配置接口地址
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
 
 Vue.use(ElementUI,axios);
 /* eslint-disable no-new */
