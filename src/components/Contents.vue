@@ -25,6 +25,7 @@
         </div>
       </div>
     </div>
+    <el-backtop><i class="fa fa-angle-up"></i></el-backtop>
   </div>
 </template>
 

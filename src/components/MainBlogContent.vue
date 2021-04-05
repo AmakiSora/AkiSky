@@ -6,12 +6,13 @@
       infinite-scroll-disabled="disabled">
         <el-container class="fa-border" v-for="i in items" :key="index">
           <el-aside style="width: 50px">
-            <div class="block"><el-avatar :size="50" :src="circleUrl"></el-avatar></div>
+            <div class="block">
+              <el-avatar :size="50" :src="i.avatarURL"></el-avatar></div>
           </el-aside>
           <el-container>
             <el-header style="height: 50px;">
               <a>{{i.name}}</a>
-              <h1 class="diyP">刚刚</h1>
+              <h1 class="diyP">{{i.uploadTime}}</h1>
             </el-header>
             <el-main>
               <p class="diyP">{{i.content}}</p>
@@ -38,7 +39,9 @@ export default {
       items: [
         {
           name: '用户名',
-          content: '内容'
+          content: '内容',
+          uploadTime: '时间',
+          avatarURL: ''
         }
       ],
       itemPerLoad: 5,//每次加载条数
@@ -65,7 +68,7 @@ export default {
     },
   },
   mounted(){
-    axios.get('/QueryAllTrend',{
+    axios.get('/notLogin/QueryAllDynamic',{
       params:{
         page: 1142,
         page_size: 2
