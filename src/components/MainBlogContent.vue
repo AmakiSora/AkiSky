@@ -4,15 +4,16 @@
       v-infinite-scroll="load"
       infinite-scroll-distance="10"
       infinite-scroll-disabled="disabled">
-        <el-container class="fa-border" v-for="i in items" :key="index">
+        <el-container class="fa-border" v-for="i in items" :key="index" style="background: #ffffff">
           <el-aside style="width: 50px">
             <div class="block">
               <el-avatar :size="50" :src="i.avatarURL"></el-avatar></div>
           </el-aside>
           <el-container>
             <el-header style="height: 50px;">
-              <a>{{i.name}}</a>
-              <h1 class="diyP">{{i.uploadTime}}</h1>
+              <el-button type="primary" size="medium" style="float: right" plain @click="focus(i.id)">+关注</el-button>
+              <a class="DIYName">{{i.name}}</a>
+              <h1 class="DIYTime">{{i.uploadTime}}</h1>
             </el-header>
             <el-main>
               <p class="diyP">{{i.content}}</p>
@@ -31,6 +32,7 @@
 
 <script>
 import axios from "axios";
+import {formatDate} from "../utils/date";
 
 export default {
   name: "MainBlogContent",
@@ -38,6 +40,7 @@ export default {
     return {
       items: [
         {
+          id: 'id',
           name: '用户名',
           content: '内容',
           uploadTime: '时间',
@@ -66,6 +69,10 @@ export default {
         this.loading = false
       }, 2000)
     },
+    focus(id){
+      axios.get('/focus/'+id).then(res=>{alert(res.data)})
+      postMessage('/focus/'+id,)
+    }
   },
   mounted(){
     axios.get('/notLogin/QueryAllDynamic',{
@@ -73,7 +80,13 @@ export default {
         page: 1142,
         page_size: 2
       }
-    }).then(res=>(this.items=res.data))
+    }).then(res=>{
+      for (let i=0;i<res.data.length;i++){
+        res.data[i].uploadTime=formatDate(new Date(res.data[i].uploadTime),'yyyy-MM-dd hh:mm')
+      }
+      this.items=res.data
+    })
+    // (res=>(this.items=res.data))
   }
 
 }
@@ -102,10 +115,32 @@ export default {
 .el-main{
   padding: 0;
 }
-/*diyP为<p>的样式*/
-.diyP{
+.DIYTime{
+  line-height: 1.7em;
+  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0;
   margin: 0;
-  padding: 0 0 10px 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  word-break: break-word;
+  outline: none;
+  text-decoration: none;
+  color: #99a2aa;
+  transition: color 0.3s ease;
+}
+.DIYName{
+  -webkit-box-direction: normal;
+  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: #222;
 }
 .router-link-active{
 text-decoration: none;
