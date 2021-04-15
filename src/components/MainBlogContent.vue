@@ -11,7 +11,7 @@
           </el-aside>
           <el-container>
             <el-header style="height: 50px;">
-              <el-button :type=i.btnCss  size="medium" style="float: right" plain @click="focus(i.id,index)">+关注</el-button>
+              <el-button :type=i.btnCss  size="medium" style="float: right" plain @click="follow(i.id,index)">+关注</el-button>
               <a class="DIYName">{{i.name}}</a>
               <h1 class="DIYTime">{{i.uploadTime}}</h1>
             </el-header>
@@ -72,19 +72,26 @@ export default {
         this.loading = false
       }, 2000)
     },
-    focus(id,NO){
+    follow(id,NO){
       //todo: 未登录跳转登录模态框
       // if(sessionStorage.getItem("id")==null){
       //   console.log(11111111)
       // }else {
       //   getRequest('/focus/'+id).then(res=>{})
       // }
-      getRequest('/focus/'+id).then(res=>{
+      getRequest('/unfollow/'+id).then(res=>{
         if (res.data===1){
           this.items[NO].btnCss = 'info'
         }
       })
     },
+    unfollow(id,NO){
+      getRequest('/unfollow/'+id).then(res=>{
+        if (res.data===1){
+          this.items[NO].btnCss = 'primary'
+        }
+      })
+    }
 
   },
   mounted(){

@@ -6,6 +6,7 @@
         <el-avatar style="display: block;margin:0 auto;" :size="50" :src="circleUrl"></el-avatar>
       </div>
       <p></p>
+      <p v-if="tips!==''" style="text-align: center ;color: red">{{tips}}</p>
       <el-input placeholder="账号" v-model="username" clearable></el-input>
       <p></p>
       <el-input placeholder="密码" v-model="password" show-password></el-input>
@@ -28,7 +29,8 @@ export default {
       DialogVisible: false,
       username: '',
       password: '',
-      checked: false
+      checked: false,
+      tips: ""
     };
   },
   methods: {
@@ -37,12 +39,18 @@ export default {
       params.append('username', this.username);
       params.append('password', this.password);
       axios.post('/login', params.toString())
-        .then(function (response) {
-          console.log(response);
+        .then(res=>{
+          if (res==401){
+            this.tips = '账号或密码错误！'
+          }else if(res==233){
+            console.log(res)
+            this.tips = ''
+            this.DialogVisible = false
+          }
         })
     },
     PopUp(){
-      this.DialogVisible= true
+      this.DialogVisible = true
     }
 
   }
