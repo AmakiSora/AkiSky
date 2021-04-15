@@ -1,7 +1,7 @@
 <template>
 <div>
-  <a type="text" @click="centerDialogVisible = true"><a class="header-a">登录</a></a>
-    <el-dialog :visible.sync="centerDialogVisible" width="370px" append-to-body="true" center>
+  <a type="text" @click="PopUp"><a class="header-a">登录</a></a>
+    <el-dialog :visible.sync="DialogVisible" width="370px" append-to-body="true" center>
       <div class="block">
         <el-avatar style="display: block;margin:0 auto;" :size="50" :src="circleUrl"></el-avatar>
       </div>
@@ -25,7 +25,7 @@ export default {
   name: "Login",
   data() {
     return {
-      centerDialogVisible: false,
+      DialogVisible: false,
       username: '',
       password: '',
       checked: false
@@ -40,6 +40,9 @@ export default {
         .then(function (response) {
           console.log(response);
         })
+    },
+    PopUp(){
+      this.DialogVisible= true
     }
 
   }

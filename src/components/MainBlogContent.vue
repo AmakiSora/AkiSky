@@ -4,14 +4,14 @@
       v-infinite-scroll="load"
       infinite-scroll-distance="10"
       infinite-scroll-disabled="disabled">
-        <el-container class="fa-border" v-for="i in items" :key="index" style="background: #ffffff">
+        <el-container class="fa-border" v-for="(i,index) in items" :key="i.NO" style="background: #ffffff">
           <el-aside style="width: 50px">
             <div class="block">
               <el-avatar :size="50" :src="i.avatarURL"></el-avatar></div>
           </el-aside>
           <el-container>
             <el-header style="height: 50px;">
-              <el-button type="primary" size="medium" style="float: right" plain @click="focus(i.id)">+关注</el-button>
+              <el-button :type=i.btnCss  size="medium" style="float: right" plain @click="focus(i.id,index)">+关注</el-button>
               <a class="DIYName">{{i.name}}</a>
               <h1 class="DIYTime">{{i.uploadTime}}</h1>
             </el-header>
@@ -31,20 +31,23 @@
 </template>
 
 <script>
-import axios from "axios";
 import {formatDate} from "../utils/date";
+import {getRequest, postRequest} from "../utils/api";
 
 export default {
   name: "MainBlogContent",
   data () {
     return {
+
       items: [
         {
+          NO: '',
           id: 'id',
           name: '用户名',
           content: '内容',
           uploadTime: '时间',
-          avatarURL: ''
+          avatarURL: '',
+          btnCss: 'primary'
         }
       ],
       itemPerLoad: 5,//每次加载条数
@@ -69,20 +72,26 @@ export default {
         this.loading = false
       }, 2000)
     },
-    focus(id){
-      axios.get('/focus/'+id).then(res=>{alert(res.data)})
-      postMessage('/focus/'+id,)
-    }
+    focus(id,NO){
+      //todo: 未登录跳转登录模态框
+      // if(sessionStorage.getItem("id")==null){
+      //   console.log(11111111)
+      // }else {
+      //   getRequest('/focus/'+id).then(res=>{})
+      // }
+      getRequest('/focus/'+id).then(res=>{
+        if (res.data===1){
+          this.items[NO].btnCss = 'info'
+        }
+      })
+    },
+
   },
   mounted(){
-    axios.get('/notLogin/QueryAllDynamic',{
-      params:{
-        page: 1142,
-        page_size: 2
-      }
-    }).then(res=>{
+    getRequest('/notLogin/QueryAllDynamic',{page: 1142, page_size: 23}).then(res=>{
       for (let i=0;i<res.data.length;i++){
         res.data[i].uploadTime=formatDate(new Date(res.data[i].uploadTime),'yyyy-MM-dd hh:mm')
+        res.data[i].btnCss='primary'
       }
       this.items=res.data
     })
