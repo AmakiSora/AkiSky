@@ -11,7 +11,6 @@
           </el-aside>
           <el-container>
             <el-header style="height: 50px;">
-              <el-button :type=i.btnCss  size="medium" style="float: right" plain @click="follow(i.id,index)">+关注</el-button>
               <a class="DIYName">{{i.name}}</a>
               <h1 class="DIYTime">{{i.uploadTime}}</h1>
             </el-header>
@@ -35,7 +34,7 @@ import {formatDate} from "../utils/date";
 import {getRequest, postRequest} from "../utils/api";
 
 export default {
-  name: "MainBlogContent",
+  name: "MyDynamicContent",
   data () {
     return {
 
@@ -47,7 +46,6 @@ export default {
           content: '内容',
           uploadTime: '时间',
           avatarURL: '',
-          btnCss: 'primary'
         }
       ],
       itemPerLoad: 5,//每次加载条数
@@ -79,7 +77,7 @@ export default {
       // }else {
       //   getRequest('/focus/'+id).then(res=>{})
       // }
-      getRequest('/unfollow/'+id).then(res=>{
+      getRequest('/follow/'+id).then(res=>{
         if (res.data===1){
           this.items[NO].btnCss = 'info'
         }
@@ -95,7 +93,7 @@ export default {
 
   },
   mounted(){
-    getRequest('/notLogin/QueryAllDynamic',{page: 1142, page_size: 23}).then(res=>{
+    getRequest('/QueryMyDynamic',{page: 1142, page_size: 23}).then(res=>{
       for (let i=0;i<res.data.length;i++){
         res.data[i].uploadTime=formatDate(new Date(res.data[i].uploadTime),'yyyy-MM-dd hh:mm')
         res.data[i].btnCss='primary'

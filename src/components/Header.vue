@@ -3,16 +3,17 @@
     <div class="header-content">
       <div class="header-left">
         <ul class="header-ul">
-          <li class="header-li"><router-link to="/"><img src="/static/image/akiSkyHeader.png" style="width: 100px" ></router-link></li>
+          <li class="header-li"><router-link to="/"><img src="/static/image/akiSkyHeader.png" style="width: 100px;display: flex" ></router-link></li>
           <li class="header-li"><Login></Login></li>
           <li class="header-li"><router-link to="/hot"><p><a class="header-a">热门</a></p></router-link></li>
           <li class="header-li"><router-link to="/hot"><p><a class="header-a">推荐</a></p></router-link></li>
           <li class="header-li"><router-link to="/hot"><p><a class="header-a">排行榜</a></p></router-link></li>
+          <li class="header-li"><router-link to="/blog"><p><a class="header-a">博客</a></p></router-link></li>
         </ul>
       </div>
       <div class="header-middle">
         <div class="header-search">
-          <form class="header-form">
+          <form>
             <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
               <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
@@ -22,6 +23,28 @@
       <div class="header-right">
         <div>
           <ul class="header-ul">
+            <li class="header-li"><router-link to="/hot" v-if="avatarURL">
+              <el-popover
+              placement="bottom"
+              width="200"
+              trigger="hover">
+                <div class="h-table">
+                  <router-link to="/logout">
+                    <div class="h-btn">登出</div>
+                  </router-link>
+                  <router-link to="/logout">
+                    <div class="h-btn">登出1</div>
+                  </router-link>
+                  <router-link to="/logout">
+                    <div class="h-btn">登出2</div>
+                  </router-link>
+                </div>
+                <router-link to="/logout">
+                  <div class="h-btn">登出</div>
+                </router-link>
+              <el-avatar :size="40" :src="avatarURL" style="display: flex" slot="reference"></el-avatar>
+            </el-popover>
+              </router-link></li>
             <li class="header-li"><router-link to="/hot"><p><a class="header-a">消息</a></p></router-link></li>
             <li class="header-li"><router-link to="/hot"><p><a class="header-a">动态</a></p></router-link></li>
             <li class="header-li"><router-link to="/hot"><p><a class="header-a">收藏</a></p></router-link></li>
@@ -39,12 +62,19 @@
 import Login from "./Login";
 export default {
 name: "Header",
-  components: {Login}
+  components: {Login},
+  data(){
+    return{
+      input3:"",
+      avatarURL: sessionStorage.getItem("avatarURL")
+    }
+  }
 }
 </script>
 
 <style scoped>
 .headerDIY{
+  background: white;
   color: #222;
   -webkit-font-smoothing: antialiased;
   font: 14px -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
@@ -148,21 +178,6 @@ name: "Header",
   box-sizing: border-box;
   position: relative;
 }
-.header-form{
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  color: #505050;
-  -webkit-font-smoothing: antialiased;
-  font: 14px -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
-  line-height: 30px;
-  margin: 0;
-  box-sizing: border-box;
-  display: block;
-  padding: 0 38px 0 16px;
-  border: 1px solid hsla(0,0%,100%,0);
-  border-radius: 2px;
-  background-color: #fff;
-}
 .header-right{
   color: #222;
   -webkit-font-smoothing: antialiased;
@@ -190,5 +205,46 @@ name: "Header",
   font-size: 14px;
   line-height: 34px;
   transition: all 0.2s;
+}
+.h-table{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  color: #606266;
+  -webkit-font-smoothing: antialiased;
+  font: 14px -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+  text-align: inherit;
+  font-style: normal;
+  margin: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid #F4F4F4;
+  padding: 7px 0;
+}
+.h-btn{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-font-smoothing: antialiased;
+  font: 14px -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+  text-align: inherit;
+  background-color: transparent;
+  touch-action: manipulation;
+  font-style: normal;
+  margin: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #212121;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease;
+  padding: 8px 23px;
 }
 </style>

@@ -2,9 +2,9 @@
 <div>
   <a type="text" @click="PopUp"><a class="header-a">登录</a></a>
     <el-dialog :visible.sync="DialogVisible" width="370px" append-to-body="true" center>
-      <div class="block">
-        <el-avatar style="display: block;margin:0 auto;" :size="50" :src="circleUrl"></el-avatar>
-      </div>
+<!--      <div class="block">-->
+<!--        <el-avatar style="display: block;margin:0 auto;" :size="50" :src="avatarURL"></el-avatar>-->
+<!--      </div>-->
       <p></p>
       <p v-if="tips!==''" style="text-align: center ;color: red">{{tips}}</p>
       <el-input placeholder="账号" v-model="username" clearable></el-input>
@@ -30,7 +30,7 @@ export default {
       username: '',
       password: '',
       checked: false,
-      tips: ""
+      tips: ''
     };
   },
   methods: {
@@ -40,12 +40,16 @@ export default {
       params.append('password', this.password);
       axios.post('/login', params.toString())
         .then(res=>{
-          if (res==401){
+          if (res===401){
             this.tips = '账号或密码错误！'
-          }else if(res==233){
-            console.log(res)
+            sessionStorage.clear()
+          }else if(res.code===200){
+            console.log(res.code)
             this.tips = ''
             this.DialogVisible = false
+            sessionStorage.setItem("name",res.data.name)
+            sessionStorage.setItem("avatarURL",res.data.avatarURL)
+            this.$router.go(0)//刷新页面
           }
         })
     },

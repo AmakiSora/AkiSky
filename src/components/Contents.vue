@@ -6,15 +6,15 @@
         <div class="left-panel">
             <div class="Infinite-roll">
               <el-menu>
-                <el-menu-item>123</el-menu-item>
-                <el-menu-item>123</el-menu-item>
-                <el-menu-item>123</el-menu-item>
+                <router-link to="/MainDynamicContent"><el-menu-item>全部动态</el-menu-item></router-link>
+                <router-link to="/MyDynamicContent"><el-menu-item>我的动态</el-menu-item></router-link>
               </el-menu>
             </div>
         </div>
         <div class="center-panel">
-          <MainBlogInput></MainBlogInput>
-          <MainBlogContent></MainBlogContent>
+          <MainDynamicInput></MainDynamicInput>
+          <router-view></router-view>
+<!--          <MainDynamicContent></MainDynamicContent>-->
         </div>
         <div class="right-panel">
           <el-menu>
@@ -30,11 +30,11 @@
 </template>
 
 <script>
-import MainBlogContent from "./MainBlogContent";
-import MainBlogInput from "./MainBlogInput";
+// import MainDynamicContent from "./MainDynamicContent";
+import MainDynamicInput from "./MainDynamicInput";
 export default {
 name: "Contents",
-  components: {MainBlogInput, MainBlogContent}
+  components: {MainDynamicInput}
 }
 </script>
 
@@ -46,7 +46,6 @@ name: "Contents",
   margin: 0;
   padding: 0;
   width: 100%;
-
 }
 .background{
   font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
@@ -125,10 +124,10 @@ name: "Contents",
   padding: 0;
   -webkit-box-flex: 1;
   flex: 1;
-  min-height: 969px;
+  /*min-height: 969px;*/
 }
 .el-menu{
-  background: #c7e2f9;
+  background: #ffffff;
   border-radius: 20px;
   font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;

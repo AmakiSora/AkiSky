@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import Login from "../components/Login";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Contents from "../components/Contents";
 export default {
