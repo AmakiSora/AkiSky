@@ -3,12 +3,12 @@
     <div class="header-content">
       <div class="header-left">
         <ul class="header-ul">
-          <li class="header-li"><router-link to="/"><img src="/static/image/akiSkyHeader.png" style="width: 100px;display: flex" ></router-link></li>
+          <li class="header-li"><router-link to="/Home"><img src="/static/image/akiSkyHeader.png" style="width: 100px;display: flex" ></router-link></li>
           <li class="header-li"><Login></Login></li>
-          <li class="header-li"><router-link to="/hot"><p><a class="header-a">热门</a></p></router-link></li>
-          <li class="header-li"><router-link to="/hot"><p><a class="header-a">推荐</a></p></router-link></li>
-          <li class="header-li"><router-link to="/hot"><p><a class="header-a">排行榜</a></p></router-link></li>
-          <li class="header-li"><router-link to="/blog"><p><a class="header-a">博客</a></p></router-link></li>
+          <li class="header-li"><router-link to="/Home"><p><a class="header-a">热门</a></p></router-link></li>
+          <li class="header-li"><router-link to="/Home"><p><a class="header-a">推荐</a></p></router-link></li>
+          <li class="header-li"><router-link to="/Home"><p><a class="header-a">排行榜</a></p></router-link></li>
+          <li class="header-li"><router-link to="/Blog"><p><a class="header-a">博客</a></p></router-link></li>
         </ul>
       </div>
       <div class="header-middle">
@@ -23,7 +23,7 @@
       <div class="header-right">
         <div>
           <ul class="header-ul">
-            <li class="header-li"><router-link to="/hot" v-if="avatarURL">
+            <li class="header-li"><router-link to="/Home" v-if="avatarURL">
               <el-popover
               placement="bottom"
               width="200"
@@ -45,12 +45,12 @@
               <el-avatar :size="40" :src="avatarURL" style="display: flex" slot="reference"></el-avatar>
             </el-popover>
               </router-link></li>
-            <li class="header-li"><router-link to="/hot"><p><a class="header-a">消息</a></p></router-link></li>
-            <li class="header-li"><router-link to="/hot"><p><a class="header-a">动态</a></p></router-link></li>
-            <li class="header-li"><router-link to="/hot"><p><a class="header-a">收藏</a></p></router-link></li>
-            <li class="header-li"><router-link to="/hot"><p><a class="header-a">历史</a></p></router-link></li>
-            <li class="header-li"><router-link to="/hot"><p><a class="header-a">创作中心</a></p></router-link></li>
-            <li class="header-li"><router-link to="/hot"><p><a class="header-a">投稿</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Home"><p><a class="header-a">消息</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Home"><p><a class="header-a">动态</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Home"><p><a class="header-a">收藏</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Home"><p><a class="header-a">历史</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Home"><p><a class="header-a">创作中心</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Home"><p><a class="header-a">投稿</a></p></router-link></li>
           </ul>
         </div>
       </div>

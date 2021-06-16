@@ -1,12 +1,11 @@
 <template>
   <div class="contentDIY">
-<!--    <div class="background"></div>-->
     <div class="content-container">
       <div class="content-home">
         <div class="left-panel">
             <div class="Infinite-roll">
               <el-menu>
-                <router-link to="/MainDynamicContent"><el-menu-item>全部动态</el-menu-item></router-link>
+                <router-link to="/MainDynamicContent" active-class="a"><el-menu-item>全部动态</el-menu-item></router-link>
                 <router-link to="/MyDynamicContent"><el-menu-item>我的动态</el-menu-item></router-link>
               </el-menu>
             </div>
@@ -14,7 +13,6 @@
         <div class="center-panel">
           <MainDynamicInput></MainDynamicInput>
           <router-view></router-view>
-<!--          <MainDynamicContent></MainDynamicContent>-->
         </div>
         <div class="right-panel">
           <el-menu>
@@ -34,7 +32,7 @@
 import MainDynamicInput from "./MainDynamicInput";
 export default {
 name: "Contents",
-  components: {MainDynamicInput}
+  components: {MainDynamicInput},
 }
 </script>
 

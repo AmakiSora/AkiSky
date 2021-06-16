@@ -1,6 +1,7 @@
 <template>
   <div class="infinite-list-wrapper" >
     <div
+      v-loading="loading"
       v-infinite-scroll="load"
       infinite-scroll-disabled="disabled"
       style="overflow: auto;height: 1000px">
@@ -67,6 +68,7 @@ export default {
       this.loading = true
       this.page=this.page + this.page_size
       setTimeout(() => {
+
         getRequest('/notLogin/QueryRangeDynamic',{page: this.page, page_size: this.page_size}).then(res=>{
           res.data.forEach(item => {
             item.uploadTime=formatDate(new Date(item.uploadTime),'yyyy-MM-dd hh:mm')

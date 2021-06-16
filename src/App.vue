@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <router-view name="Apps"></router-view>
-    <Home></Home>
+    <Header></Header>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Home from "./page/Home";
+import Header from "../src/components/Header";
 export default {
   name: 'App',
-  components: {Home},
+  components: {Header},
   mounted() {
   }
 }

@@ -6,12 +6,31 @@ import Blog from "../page/Blog";
 import MainDynamicContent from "../components/MainDynamicContent";
 import MyDynamicContent from "../components/MyDynamicContent";
 import Home from "../page/Home";
+import Contents from "../components/Contents";
 Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: "/",
+      component: Home,
+    },
+    {
       path: "/Home",
       component: Home
+    },
+    {
+      path: "/Contents",
+      component: Contents,
+      children:[
+        {
+          path: "/MainDynamicContent",
+          component: MainDynamicContent
+        },
+        {
+          path: "/MyDynamicContent",
+          component: MyDynamicContent
+        }
+      ]
     },
     {
       path: "/Login",
