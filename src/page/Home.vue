@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Contents from "../components/Contents";
+import Contents from "./DynamicPage";
 export default {
   name: "Home",
   components: {Contents}

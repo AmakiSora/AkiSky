@@ -3,11 +3,11 @@
     <div class="header-content">
       <div class="header-left">
         <ul class="header-ul">
-          <li class="header-li"><router-link to="/Home"><img src="/static/image/akiSkyHeader.png" style="width: 100px;display: flex" ></router-link></li>
+          <li class="header-li"><router-link to="/Dynamic"><img src="/static/image/akiSkyHeader.png" style="width: 100px;display: flex" ></router-link></li>
           <li class="header-li"><Login></Login></li>
-          <li class="header-li"><router-link to="/Home"><p><a class="header-a">热门</a></p></router-link></li>
-          <li class="header-li"><router-link to="/Home"><p><a class="header-a">推荐</a></p></router-link></li>
-          <li class="header-li"><router-link to="/Home"><p><a class="header-a">排行榜</a></p></router-link></li>
+          <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">热门</a></p></router-link></li>
+          <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">推荐</a></p></router-link></li>
+          <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">排行榜</a></p></router-link></li>
           <li class="header-li"><router-link to="/Blog"><p><a class="header-a">博客</a></p></router-link></li>
         </ul>
       </div>
@@ -23,34 +23,34 @@
       <div class="header-right">
         <div>
           <ul class="header-ul">
-            <li class="header-li"><router-link to="/Home" v-if="avatarURL">
-              <el-popover
-              placement="bottom"
-              width="200"
-              trigger="hover">
-                <div class="h-table">
-                  <router-link to="/logout">
-                    <div class="h-btn">登出</div>
-                  </router-link>
-                  <router-link to="/logout">
-                    <div class="h-btn">登出1</div>
-                  </router-link>
-                  <router-link to="/logout">
-                    <div class="h-btn">登出2</div>
-                  </router-link>
-                </div>
-                <router-link to="/logout">
-                  <div class="h-btn">登出</div>
-                </router-link>
-              <el-avatar :size="40" :src="avatarURL" style="display: flex" slot="reference"></el-avatar>
-            </el-popover>
-              </router-link></li>
-            <li class="header-li"><router-link to="/Home"><p><a class="header-a">消息</a></p></router-link></li>
-            <li class="header-li"><router-link to="/Home"><p><a class="header-a">动态</a></p></router-link></li>
-            <li class="header-li"><router-link to="/Home"><p><a class="header-a">收藏</a></p></router-link></li>
-            <li class="header-li"><router-link to="/Home"><p><a class="header-a">历史</a></p></router-link></li>
-            <li class="header-li"><router-link to="/Home"><p><a class="header-a">创作中心</a></p></router-link></li>
-            <li class="header-li"><router-link to="/Home"><p><a class="header-a">投稿</a></p></router-link></li>
+<!--            <li class="header-li"><router-link to="/Home" v-if="avatarURL">-->
+<!--              <el-popover-->
+<!--              placement="bottom"-->
+<!--              width="200"-->
+<!--              trigger="hover">-->
+<!--                <div class="h-table">-->
+<!--                  <router-link to="/logout">-->
+<!--                    <div class="h-btn">登出</div>-->
+<!--                  </router-link>-->
+<!--                  <router-link to="/logout">-->
+<!--                    <div class="h-btn">登出1</div>-->
+<!--                  </router-link>-->
+<!--                  <router-link to="/logout">-->
+<!--                    <div class="h-btn">登出2</div>-->
+<!--                  </router-link>-->
+<!--                </div>-->
+<!--                <router-link to="/logout">-->
+<!--                  <div class="h-btn">登出</div>-->
+<!--                </router-link>-->
+<!--              <el-avatar :size="40" :src="avatarURL" style="display: flex" slot="reference"></el-avatar>-->
+<!--            </el-popover>-->
+<!--              </router-link></li>-->
+            <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">消息</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">动态</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">收藏</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">历史</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">创作中心</a></p></router-link></li>
+            <li class="header-li"><router-link to="/Writing"><p><a class="header-a">投稿</a></p></router-link></li>
           </ul>
         </div>
       </div>

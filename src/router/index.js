@@ -6,21 +6,23 @@ import Blog from "../page/Blog";
 import MainDynamicContent from "../components/MainDynamicContent";
 import MyDynamicContent from "../components/MyDynamicContent";
 import Home from "../page/Home";
-import Contents from "../components/Contents";
+import Dynamic from "../page/DynamicPage";
+import LoginPage from "../page/LoginPage"
+import WritingPage from "../page/WritingPage";
 Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: "/LoginPage",
+      component: LoginPage,
+    },
+    {
       path: "/",
-      component: Home,
+      component: LoginPage,
     },
     {
-      path: "/Home",
-      component: Home
-    },
-    {
-      path: "/Contents",
-      component: Contents,
+      path: "/Dynamic",
+      component: Dynamic,
       children:[
         {
           path: "/MainDynamicContent",
@@ -37,12 +39,8 @@ export default new Router({
       component: Login
     },
     {
-      path: "/MainDynamicContent",
-      component: MainDynamicContent
-    },
-    {
-      path: "/MyDynamicContent",
-      component: MyDynamicContent
+      path: "/Writing",
+      component: WritingPage
     },
     {
       path: "/Blog",

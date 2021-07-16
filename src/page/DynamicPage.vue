@@ -1,17 +1,50 @@
 <template>
-  <div class="contentDIY">
+  <div class="DynamicPage">
+    <Header></Header>
     <div class="content-container">
       <div class="content-home">
         <div class="left-panel">
-            <div class="Infinite-roll">
-              <el-menu>
-                <router-link to="/MainDynamicContent" active-class="a"><el-menu-item>全部动态</el-menu-item></router-link>
-                <router-link to="/MyDynamicContent"><el-menu-item>我的动态</el-menu-item></router-link>
-              </el-menu>
+          <div class="left-info">
+            <div class="left-info-header">
+              <el-avatar :size="50" :src="avatarURL" slot="reference"></el-avatar>
+              <p style="margin-left: 10px">123</p>
             </div>
+            <div class="left-info-data">
+              <div class="left-info-data-card">
+                关注
+              </div>
+              <div class="left-info-data-card">
+                粉丝
+              </div>
+              <div class="left-info-data-card">
+                动态
+              </div>
+            </div>
+            <div class="left-info-data">
+              <div class="left-info-data-card">
+                100
+              </div>
+              <div class="left-info-data-card">
+                22
+              </div>
+              <div class="left-info-data-card">
+                1
+              </div>
+            </div>
+
+          </div>
+          <div class="Infinite-roll">
+            <el-menu>
+              <router-link to="/MainDynamicContent" active-class="a"><el-menu-item>全部动态</el-menu-item></router-link>
+              <router-link to="/MyDynamicContent"><el-menu-item>我的动态</el-menu-item></router-link>
+            </el-menu>
+          </div>
         </div>
         <div class="center-panel">
-          <MainDynamicInput></MainDynamicInput>
+          <div class="dynamic-input">
+            <el-input v-model="input" placeholder="请输入内容"></el-input>
+            <el-button style="text-align: right">发布</el-button>
+          </div>
           <router-view></router-view>
         </div>
         <div class="right-panel">
@@ -29,24 +62,23 @@
 
 <script>
 // import MainDynamicContent from "./MainDynamicContent";
-import MainDynamicInput from "./MainDynamicInput";
+import Header from "../components/Header";
 export default {
-name: "Contents",
-  components: {MainDynamicInput},
+name: "Dynamic",
+  components: {Header},
 }
 </script>
 
 <style scoped>
-.contentDIY{
-  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+.DynamicPage{
   color: #222;
   font-size: 14px;
   margin: 0;
   padding: 0;
   width: 100%;
+  background: #a2cbf4;
 }
 .background{
-  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;
   font-size: 14px;
   margin: 0;
@@ -126,7 +158,7 @@ name: "Contents",
 }
 .el-menu{
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 10px;
   font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;
   font-size: 14px;
@@ -140,5 +172,26 @@ name: "Contents",
 }
 .el-menu-item{
   border-radius: 20px;
+}
+.left-info{
+  background: white;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.left-info-header{
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.left-info-data{
+  display: flex;
+  text-align: center;
+  margin: 10px;
+}
+.left-info-data-card{
+  flex: 1;
+}
+.dynamic-input{
+  margin: 10px;
 }
 </style>

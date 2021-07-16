@@ -1,5 +1,5 @@
 <template>
-  <div class="infinite-list-wrapper" >
+  <div class="infinite-list-wrapper">
     <div
       v-loading="loading"
       v-infinite-scroll="load"

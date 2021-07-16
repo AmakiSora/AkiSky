@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header></Header>
     <el-container>
       <el-aside>
         <el-menu>
@@ -53,9 +54,10 @@ git push --force强制推送
 </template>
 
 <script>
+import Header from "../components/Header";
 export default {
   name: "Blog",
-  components: {}
+  components: {Header}
 }
 </script>
 
