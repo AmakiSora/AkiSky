@@ -31,6 +31,15 @@ axios.interceptors.response.use(success=>{
     }
   }
 })
+//请求拦截器
+axios.interceptors.request.use(config =>{
+  const token = window.sessionStorage.getItem("token")
+  if (token!=null)
+    config.headers = {
+      'token' : token,
+    }
+  return config
+})
 
 let path = 'http://localhost:8080'
 //传送json格式的post请求
@@ -41,7 +50,7 @@ export const postRequest= (url,params)=>{
     data: params
   })
 }
-//传送json格式的post请求
+//传送json格式的get请求
 export const getRequest= (url,params)=>{
   return axios({
     method:'get',

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog">
     <Header></Header>
     <el-container>
       <el-aside>
@@ -62,6 +62,9 @@ export default {
 </script>
 
 <style scoped>
+.blog{
+  background: #a2cbf4;
+}
 .el-container{
   margin-left: 190px;
   margin-right: 190px;

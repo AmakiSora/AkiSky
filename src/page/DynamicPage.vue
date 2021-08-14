@@ -7,7 +7,7 @@
           <div class="left-info">
             <div class="left-info-header">
               <el-avatar :size="50" :src="avatarURL" slot="reference"></el-avatar>
-              <p style="margin-left: 10px">123</p>
+              <p style="margin-left: 10px" v-text="username">???</p>
             </div>
             <div class="left-info-data">
               <div class="left-info-data-card">
@@ -21,13 +21,13 @@
               </div>
             </div>
             <div class="left-info-data">
-              <div class="left-info-data-card">
-                100
+              <div class="left-info-data-card" v-text="followNum">
+                1
               </div>
-              <div class="left-info-data-card">
-                22
+              <div class="left-info-data-card" v-text="fansNum">
+                1
               </div>
-              <div class="left-info-data-card">
+              <div class="left-info-data-card" v-text="dynamicNum">
                 1
               </div>
             </div>
@@ -61,11 +61,29 @@
 </template>
 
 <script>
-// import MainDynamicContent from "./MainDynamicContent";
 import Header from "../components/Header";
+import {getRequest} from "../utils/api";
 export default {
 name: "Dynamic",
   components: {Header},
+  data(){
+    return{
+      avatarURL:233,
+      username:233,
+      followNum:233,
+      fansNum:233,
+      dynamicNum:233,
+    }
+  },
+  mounted(){
+    getRequest('/getInfo/'+sessionStorage.getItem("username")).then(res=>{
+      this.avatarURL = res.data.avatarURL
+      this.username = res.data.name
+      this.followNum = res.data.followNum
+      this.fansNum = res.data.fansNum
+      this.dynamicNum = res.data.dynamicNum
+    })
+  }
 }
 </script>
 
@@ -94,7 +112,6 @@ name: "Dynamic",
   background-position: center;
 }
 .content-container{
-  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;
   font-size: 14px;
   margin: 0;
@@ -103,7 +120,6 @@ name: "Dynamic",
   margin-top: 8px;
 }
 .content-home{
-  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;
   font-size: 14px;
   padding: 0;
@@ -116,7 +132,6 @@ name: "Dynamic",
   position: relative;
 }
 .left-panel{
-  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;
   font-size: 14px;
   margin: 0;
@@ -128,7 +143,6 @@ name: "Dynamic",
   flex-direction: column;
 }
 .center-panel{
-  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;
   font-size: 14px;
   -webkit-box-direction: normal;
@@ -137,7 +151,6 @@ name: "Dynamic",
   margin: 0 8px;
 }
 .right-panel{
-  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;
   font-size: 14px;
   margin: 0;
@@ -155,12 +168,12 @@ name: "Dynamic",
   padding: 0;
   -webkit-box-flex: 1;
   flex: 1;
+  overflow: hidden;
   /*min-height: 969px;*/
 }
 .el-menu{
   background: #ffffff;
   border-radius: 10px;
-  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
   color: #222;
   font-size: 14px;
   -webkit-box-direction: normal;

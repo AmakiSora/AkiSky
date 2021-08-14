@@ -23,7 +23,7 @@
 import axios from "axios";
 
 export default {
-  name: "Login",
+  name: "LoginBox",
   data() {
     return {
       DialogVisible: false,

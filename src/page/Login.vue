@@ -26,7 +26,7 @@
 import axios from "axios";
 
 export default {
-  name: "LoginPage",
+  name: "Login",
   data(){
     return {
       loginForm:{
@@ -50,19 +50,18 @@ export default {
         const params = new URLSearchParams();
         params.append('username', this.loginForm.username);
         params.append('password', this.loginForm.password);
+        sessionStorage.setItem("username",this.loginForm.username)
         axios.post('/login', params.toString())
           .then(res=>{
             if (res===401){
               this.tips = '账号或密码错误！'
               sessionStorage.clear()
-
             }else if(res.code===200){
               console.log(res.code)
               this.tips = ''
               this.DialogVisible = false
-              sessionStorage.setItem("name",res.data.name)
-              sessionStorage.setItem("avatarURL",res.data.avatarURL)
-              this.$router.push({path:'/Dynamic',query:{setid:123456}});
+              sessionStorage.setItem("token",res.token)
+              this.$router.push({path:'/MainDynamicContent',query:{setid:123456}});
             }
           })
       })

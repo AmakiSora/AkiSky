@@ -4,7 +4,7 @@
       <div class="header-left">
         <ul class="header-ul">
           <li class="header-li"><router-link to="/Dynamic"><img src="/static/image/akiSkyHeader.png" style="width: 100px;display: flex" ></router-link></li>
-          <li class="header-li"><Login></Login></li>
+          <li class="header-li"><a @click="logout">登出</a></li>
           <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">热门</a></p></router-link></li>
           <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">推荐</a></p></router-link></li>
           <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">排行榜</a></p></router-link></li>
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import Login from "./Login";
+import Login from "./LoginBox";
 export default {
 name: "Header",
   components: {Login},
@@ -67,6 +67,12 @@ name: "Header",
     return{
       input3:"",
       avatarURL: sessionStorage.getItem("avatarURL")
+    }
+  },
+  methods:{
+    logout(){
+      window.sessionStorage.clear();
+      this.$router.push('/loginPage')
     }
   }
 }
