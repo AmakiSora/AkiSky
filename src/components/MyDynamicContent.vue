@@ -31,7 +31,7 @@
 
 <script>
 import {formatDate} from "../utils/date";
-import {getRequest, postRequest} from "../utils/api";
+import {deleteRequest, getRequest, postRequest} from "../utils/api";
 
 export default {
   name: "MyDynamicContent",
@@ -93,7 +93,7 @@ export default {
 
   },
   mounted(){
-    getRequest('/QueryMyDynamic',{page: 1142, page_size: 23}).then(res=>{
+    getRequest('/dynamics/'+sessionStorage.getItem("username"),{page: 1142, page_size: 23}).then(res=>{
       for (let i=0;i<res.data.length;i++){
         res.data[i].uploadTime=formatDate(new Date(res.data[i].uploadTime),'yyyy-MM-dd hh:mm')
         res.data[i].btnCss='primary'

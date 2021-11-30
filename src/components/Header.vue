@@ -7,7 +7,7 @@
           <li class="header-li"><a @click="logout">登出</a></li>
           <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">热门</a></p></router-link></li>
           <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">推荐</a></p></router-link></li>
-          <li class="header-li"><router-link to="/Dynamic"><p><a class="header-a">排行榜</a></p></router-link></li>
+          <li class="header-li"><router-link to="/Draw"><p><a class="header-a">画画</a></p></router-link></li>
           <li class="header-li"><router-link to="/Blog"><p><a class="header-a">博客</a></p></router-link></li>
         </ul>
       </div>

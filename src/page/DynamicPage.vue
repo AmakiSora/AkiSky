@@ -9,25 +9,25 @@
               <el-avatar :size="50" :src="avatarURL" slot="reference"></el-avatar>
               <p style="margin-left: 10px" v-text="username">???</p>
             </div>
-            <div class="left-info-data">
-              <div class="left-info-data-card">
+            <div class="left-info-content">
+              <div class="left-info-content-card">
                 关注
               </div>
-              <div class="left-info-data-card">
+              <div class="left-info-content-card">
                 粉丝
               </div>
-              <div class="left-info-data-card">
+              <div class="left-info-content-card">
                 动态
               </div>
             </div>
-            <div class="left-info-data">
-              <div class="left-info-data-card" v-text="followNum">
+            <div class="left-info-content">
+              <div class="left-info-content-card" v-text="followNum">
                 1
               </div>
-              <div class="left-info-data-card" v-text="fansNum">
+              <div class="left-info-content-card" v-text="fansNum">
                 1
               </div>
-              <div class="left-info-data-card" v-text="dynamicNum">
+              <div class="left-info-content-card" v-text="dynamicNum">
                 1
               </div>
             </div>
@@ -48,11 +48,10 @@
           <router-view></router-view>
         </div>
         <div class="right-panel">
-          <el-menu>
-            <el-menu-item>123</el-menu-item>
-            <el-menu-item>123</el-menu-item>
-            <el-menu-item>123</el-menu-item>
-          </el-menu>
+          <div class="right-info">
+            <div class="right-info-header">公告栏</div>
+            <div class="right-info-content">这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!这是一个公告栏!</div>
+          </div>
         </div>
       </div>
     </div>
@@ -197,15 +196,25 @@ name: "Dynamic",
   margin-top: 10px;
   margin-left: 10px;
 }
-.left-info-data{
+.left-info-content{
   display: flex;
   text-align: center;
   margin: 10px;
 }
-.left-info-data-card{
+.left-info-content-card{
   flex: 1;
 }
 .dynamic-input{
+  margin: 10px;
+}
+.right-info{
+  background: white;
+  margin-bottom: 10px;
+  border-radius: 10px;}
+.right-info-header{
+  margin: 10px;
+}
+.right-info-content{
   margin: 10px;
 }
 </style>

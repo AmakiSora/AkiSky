@@ -7,6 +7,7 @@ import MainDynamicContent from "../components/MainDynamicContent";
 import MyDynamicContent from "../components/MyDynamicContent";
 import Dynamic from "../page/DynamicPage";
 import WritingPage from "../page/WritingPage";
+import Draw from "../page/Draw";
 Vue.use(Router)
 const router = new Router({
   mode:'history',
@@ -40,6 +41,10 @@ const router = new Router({
     {
       path: "/Blog",
       component: Blog
+    },
+    {
+      path: "/Draw",
+      component: Draw
     },
     {
       path: "/zujian",
